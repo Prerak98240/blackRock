@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import { toJS } from 'mobx';
 
 @observer
 class AdvanceFilter extends Component {
@@ -14,12 +13,10 @@ class AdvanceFilter extends Component {
     }
 
     onChange = (e, id) => {
-        console.log("Prerak")
         this.props.store.changeTheParent(id)        
     }
 
     onChildChange = (e, id, name) => {
-        console.log(id)
         this.props.store.childChanged(id, name);
         this.props.store.checkParent(id)
     }

@@ -40,7 +40,7 @@ const HomeComponent = () => {
         </div>
       </FlexContainer>
       <FlexContainer>
-        <div>
+        <div className="full">
           <FormComponent store={MainStore} />
         </div>
       </FlexContainer>

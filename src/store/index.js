@@ -3,6 +3,9 @@ import { computed, observable, action, toJS } from 'mobx'
 class Store {
     @observable advanceFilters = [{ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }}];
     @observable checkedFilters = [];
+    @observable firstName ="";
+    @observable lastName ="";
+    
 
     @action
     childChanged(id, i){
@@ -49,6 +52,12 @@ class Store {
     submitTheData() {
         this.checkedFilters = this.advanceFilters.filter(cur => cur.parent.checked === true);
     }
+
+    @action
+    stringValueChanged(propertyName, changedValue) {
+        this[propertyName] = changedValue;
+    }
+
 }
 
 var MainStore = window.TodoStore = new Store();
