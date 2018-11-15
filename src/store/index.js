@@ -1,16 +1,4 @@
-import { computed, observable, action } from 'mobx'
-
-class Todo {
-    @observable value
-    @observable id
-    @observable complete
-
-    constructor(value) {
-        this.value = value;
-        this.id = Date.now();
-        this.complete = false;
-    }
-}
+import { computed, observable, action, toJS } from 'mobx'
 
 class Store {
     @observable advanceFilters = [{ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }}];
@@ -30,7 +18,6 @@ class Store {
         } else {
             this.advanceFilters[id].parent.child.forEach(cur => cur.checked =false)
         }
-
     }
 
     @action
@@ -55,12 +42,12 @@ class Store {
 
     @action
     addFilter() {
-        this.advanceFilters.push({ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }})
+        this.advanceFilters.push({ "parent": { "name": "abcd", "checked": false, "child": [{ "name": "abcd1", 'checked': false }, { "name": "abc2", 'checked': false }] }})
     }
 
     @action
     submitTheData() {
-        this.checkedFilters = this.advanceFilters.filter(cur => cur.checked = true)
+        this.checkedFilters = this.advanceFilters.filter(cur => cur.parent.checked === true);
     }
 }
 
