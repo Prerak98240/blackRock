@@ -7,7 +7,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 @observer
 class SubmitComponent extends Component {
     onClick = () => { }
-    
+
     render() {
 
         const { checkedFilters } = this.props.store;
@@ -33,6 +33,8 @@ class SubmitComponent extends Component {
                 <ul>{filterList}</ul>
                 <p>First Name: {this.props.store.firstName}</p>
                 <p>Last Name: {this.props.store.lastName}</p>
+                <p>Email: {this.props.store.email}</p>
+
                 <button onClick={this.onClick} >
                     <NavLink to="/"> Back to Home </NavLink>
                 </button>

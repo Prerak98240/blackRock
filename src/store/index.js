@@ -5,6 +5,8 @@ class Store {
     @observable checkedFilters = [];
     @observable firstName ="";
     @observable lastName ="";
+    @observable email ="";
+    @observable compareEmail ="";
     
 
     @action
