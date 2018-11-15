@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import React, { Component, Fragment } from 'react';
+import { Route, withRouter } from "react-router-dom";
 import styled from 'styled-components';
 import MainStore from './store';
+
+import { inject, observer } from 'mobx-react';
+import GlobalStyle from './global-styles'
 
 import AdvanceFilter from './components/AdvanceFilter';
 import ImagesComponent from './components/Images';
@@ -17,53 +20,38 @@ const FlexContainer = styled.div`
   }
 `
 
+@withRouter
+@inject(`store`)
+@observer
 class App extends Component {
 
-  // onClick = () => {
-  //   this.props.router.push('/users/');
-  // }
-
   render() {
-
     return (
-      <div className="App">
+      <Fragment>
+        <GlobalStyle />
+        <div className="App">
 
-        <FlexContainer>
-          <div>
-            <AdvanceFilter store={MainStore} />
-          </div>
-          <div>
-            <ImagesComponent store={MainStore} />
-          </div>
-        </FlexContainer>
-        <FlexContainer>
-          <div>
-            <FormComponent store={MainStore} />
-          </div>
-        </FlexContainer>
+          <FlexContainer>
+            <div>
+              <AdvanceFilter store={MainStore} />
+            </div>
+            <div>
+              <ImagesComponent store={MainStore} />
+            </div>
+          </FlexContainer>
+          <FlexContainer>
+            <div>
+              <FormComponent store={MainStore} />
+            </div>
+          </FlexContainer>
 
-        {/* <Router>
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about/">About</Link>
-                </li>
-                
-              </ul>
-            </nav>
-
-            <Route path="/" exact component={Index} />
-            <Route path="/about/" component={About} />
-            <Route path="/users/" component={Users} />
+            <Route path="/submit/" component={SubmitComponent} />
           </div>
-        </Router> */}
-      </div>
+        </div>
+      </Fragment>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -14,7 +14,8 @@ class Todo {
 
 class Store {
     @observable advanceFilters = [{ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }}];
-    
+    @observable checkedFilters = [];
+
     @action
     childChanged(id, i){
         this.advanceFilters[id].parent.child[i].checked = !this.advanceFilters[id].parent.child[i].checked;
@@ -55,6 +56,11 @@ class Store {
     @action
     addFilter() {
         this.advanceFilters({ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }})
+    }
+
+    @action
+    submitTheData() {
+        this.checkedFilters = this.advanceFilters.filter(cur => cur.checked = true)
     }
 }
 
