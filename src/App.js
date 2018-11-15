@@ -15,9 +15,17 @@ import './App.css';
 
 const FlexContainer = styled.div`
   display: flex;
+  background : lightblue;
   > div {
+  border: 2px solid black;
     margin: 10px;
+    width: 35%;
   }
+  > div.full {
+    border: 2px solid black;
+      margin: 10px;
+      width: 100%;
+    }
 `
 
 const HomeComponent = () => {
@@ -27,7 +35,7 @@ const HomeComponent = () => {
         <div>
           <AdvanceFilter store={MainStore} />
         </div>
-        <div>
+        <div className="full">
           <ImagesComponent store={MainStore} />
         </div>
       </FlexContainer>
@@ -49,8 +57,8 @@ class App extends Component {
       <Fragment>
         <GlobalStyle />
         <div className="App">
-            <Route path="/" exact component={HomeComponent} />
-            <Route path="/submit/" component={SubmitComponent} />
+          <Route path="/" exact component={HomeComponent} />
+          <Route path="/submit/" component={SubmitComponent} />
         </div>
       </Fragment>
     );
