@@ -55,7 +55,7 @@ class Store {
 
     @action
     addFilter() {
-        this.advanceFilters({ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }})
+        this.advanceFilters.push({ "parent": { "name": "abc", "checked": false, "child": [{ "name": "abc1", 'checked': false }, { "name": "abc2", 'checked': false }] }})
     }
 
     @action

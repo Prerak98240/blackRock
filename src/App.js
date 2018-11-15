@@ -20,34 +20,37 @@ const FlexContainer = styled.div`
   }
 `
 
+const HomeComponent = () => {
+  return (
+    <div>
+      <FlexContainer>
+        <div>
+          <AdvanceFilter store={MainStore} />
+        </div>
+        <div>
+          <ImagesComponent store={MainStore} />
+        </div>
+      </FlexContainer>
+      <FlexContainer>
+        <div>
+          <FormComponent store={MainStore} />
+        </div>
+      </FlexContainer>
+    </div>
+  )
+}
+
 @withRouter
 @inject(`store`)
 @observer
 class App extends Component {
-
   render() {
     return (
       <Fragment>
         <GlobalStyle />
         <div className="App">
-
-          <FlexContainer>
-            <div>
-              <AdvanceFilter store={MainStore} />
-            </div>
-            <div>
-              <ImagesComponent store={MainStore} />
-            </div>
-          </FlexContainer>
-          <FlexContainer>
-            <div>
-              <FormComponent store={MainStore} />
-            </div>
-          </FlexContainer>
-
-          <div>
+            <Route path="/" exact component={HomeComponent} />
             <Route path="/submit/" component={SubmitComponent} />
-          </div>
         </div>
       </Fragment>
     );
